@@ -1,0 +1,72 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+    id "org.sonarqube" version "5.1.0.4882"
+}
+
+android {
+    namespace = "com.example.miapp"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.miapp"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "com.example.miapp"
+        property "sonar.projectName", "com.example.miapp"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.sources", "src/main/java"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.login", "admin"
+        property "sonar.password", "RodibertoMorales#01"
+    }
+}
+
+//sonarqube {
+//    properties {
+//        property "sonar.projectKey", "com.example.miapp"
+//        property "sonar.projectName", "com.example.miapp"
+//        property "sonar.host.url", "http://localhost:9000"
+//        property "sonar.login", "sqp_b7f30af247f4d941921b020e00b5bdbb1c625753"
+//        property "sonar.sources", "src/main"
+//        property "sonar.tests", "src/test"
+//        property "sonar.java.binaries", "build"
+//        property "sonar.sourceEncoding", "UTF-8"
+//    }
+//}
+
+
+
+flutter {
+    source = "../.."
+}
